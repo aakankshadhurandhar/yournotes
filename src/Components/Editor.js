@@ -66,6 +66,7 @@ const Editor = ({ notes, selectedNote, selectedNoteIndex, noteUpdate }) => {
         }, 1500);
 
         return () => clearTimeout(timer);
+        // eslint-disable-next-line
     }, [update]);
 
     function updateBody(val) {
