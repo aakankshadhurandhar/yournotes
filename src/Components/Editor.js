@@ -43,6 +43,25 @@ const useStyles = makeStyles((theme) => ({
         color: "white"
       }
 }));
+var toolbarOptions = [
+    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+    ["link", "image",'blockquote', 'code-block'],
+  
+    [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+    [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+    [{ 'direction': 'rtl' }],                         // text direction
+  
+    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+  
+    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+    [{ 'font': [] }],
+    [{ 'align': [] }],
+  
+    ['clean']                                         // remove formatting button
+  ];
 
 const Editor = ({ notes, selectedNote, selectedNoteIndex, noteUpdate }) => {
     const [text, setText] = useState(selectedNote && selectedNote.body);
@@ -87,7 +106,13 @@ const Editor = ({ notes, selectedNote, selectedNoteIndex, noteUpdate }) => {
                 placeholder="Note title..."
                 value={title ? title : ""}
                 onChange={(e) => updateTitle(e.target.value)}></input>
-            <Quill theme="snow" value={text} onChange={updateBody} />
+            <Quill theme="snow" 
+            value={text} 
+            onChange={updateBody} 
+            modules={ {
+                toolbar: toolbarOptions
+              }}
+            />
         </div>
     );
 };
