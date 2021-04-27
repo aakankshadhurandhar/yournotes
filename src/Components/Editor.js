@@ -6,7 +6,7 @@ import BorderColorIcon from "@material-ui/icons/BorderColor";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: 'white',
         height: "calc(100% - 35px)",
         position: "absolute",
         left: "0",
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         padding: "5px",
         fontSize: "24px",
         width: "calc(100% - 300px)",
-        backgroundColor: "#29487d",
+        backgroundColor: "#1F2937",
         color: "white",
         paddingLeft: "50px",
     },

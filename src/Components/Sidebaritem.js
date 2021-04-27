@@ -10,11 +10,13 @@ const useStyles = makeStyles((theme) => ({
     },
     textSection: {
         maxWidth: "85%",
+        color:"white"
     },
     deleteIcon: {
         position: "absolute",
         right: "5px",
         top: "calc(50% - 15px)",
+        color:"white",
         "&:hover": {
             color: "red",
         },

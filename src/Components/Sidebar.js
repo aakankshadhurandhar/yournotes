@@ -3,6 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import { Divider, Button } from "@material-ui/core";
 import SidebarItem from "./Sidebaritem";
+import { useAuth } from "../Hooks/useAuth";
+import Exit from "@material-ui/icons/ExitToApp";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -10,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         height: "calc(100% - 35px)",
         position: "absolute",
         left: "0",
-        width: "300px",
+        width: "16rem",
         boxShadow: "0px 0px 2px black",
     },
     newChatBtn: {
@@ -43,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
         float: "left",
         overflowY: "scroll",
         overflowX: "hidden",
+        backgroundColor:"#111827"
     },
     newNoteInput: {
         width: "100%",
@@ -61,13 +65,27 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "0px",
         color: "white",
     },
+    userInfoPanel: {
+        position: "fixed",
+        bottom: 0,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        backgroundColor: "#09299c",
+        color: "#fff",
+        width: "290px",
+        padding: "10px",
+      },
+      logoutIcon: {
+        cursor: "pointer",
+      },
 }));
 
 const Sidebar = ({ notes, selectedNoteIndex, selectNote, deleteNote, newNote }) => {
     const [addingNote, setAddingNote] = useState(false);
     const [title, setTitle] = useState("");
     const inputRef = useRef();
-
+    const {user,signout}=useAuth();
     const classes = useStyles();
 
     const newNoteBtnClick = () => {
@@ -91,11 +109,15 @@ const Sidebar = ({ notes, selectedNoteIndex, selectNote, deleteNote, newNote }) 
         setAddingNote(false);
     };
     // const selectNote = (n, i) => ;
-
+    const handlelogout=()=>{
+        signout();
+    }
     return (
         <div className={classes.sidebarContainer}>
+            
             <Button onClick={newNoteBtnClick} className={classes.newNoteBtn}>
-                New Note
+                {addingNote? 'Cancel':'New Note'}
+                
             </Button>
             {addingNote ? (
                 <div>
@@ -110,22 +132,34 @@ const Sidebar = ({ notes, selectedNoteIndex, selectNote, deleteNote, newNote }) 
                     </Button>
                 </div>
             ) : null}
-            <List>
-                {notes &&
-                    notes.map((_note, _index) => {
-                        return (
-                            <div key={_index}>
-                                <SidebarItem
-                                    _note={_note}
-                                    _index={_index}
-                                    selectedNoteIndex={selectedNoteIndex}
-                                    selectNote={selectNote}
-                                    deleteNote={deleteNote}></SidebarItem>
-                                <Divider></Divider>
-                            </div>
-                        );
-                    })}
-            </List>
+            <div className={classes.noteList}>
+                <List>
+                    {notes &&
+                        notes.map((_note, _index) => {
+                            return (
+                                <div key={_index}>
+                                    <SidebarItem
+                                        _note={_note}
+                                        _index={_index}
+                                        selectedNoteIndex={selectedNoteIndex}
+                                        selectNote={selectNote}
+                                        deleteNote={deleteNote}></SidebarItem>
+                                    <Divider></Divider>
+                                </div>
+                            );
+                        })}
+                </List>
+            </div>
+            {user && (
+        <div className={classes.userInfoPanel}>
+          {user.email}{" "}
+          <Exit
+            onClick={handlelogout}
+            className={classes.logoutIcon}
+            titleAccess={"Logout"}
+          />
+        </div>
+      )}
         </div>
     );
 };

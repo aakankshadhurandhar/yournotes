@@ -3,10 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ProvideAuth } from './Hooks/useAuth';
+import { StylesProvider } from '@material-ui/core/styles';
 
 ReactDOM.render(
   <React.StrictMode>
+    <StylesProvider>
+    <ProvideAuth>
     <App />
+    </ProvideAuth>
+    </StylesProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
