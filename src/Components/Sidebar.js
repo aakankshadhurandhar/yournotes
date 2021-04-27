@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        backgroundColor: "#09299c",
+        backgroundColor: "#111827",
         color: "#fff",
         width: "290px",
         padding: "10px",
