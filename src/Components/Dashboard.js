@@ -8,7 +8,7 @@ import { removeHTMLTags } from "../Helpers/Helpers";
 import { useCallback } from "react";
 
 const Dashboard = () => {
-  const [notes, setNotes] = useState(null);
+  const [notes, setNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
   const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
   const [newNoteId, setNewNoteId] = useState(null);
