@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import Quill from "react-quill";
+import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { makeStyles } from "@material-ui/core/styles";
 import BorderColorIcon from "@material-ui/icons/BorderColor";
+
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -19,21 +21,21 @@ const useStyles = makeStyles((theme) => ({
         border: "none",
         padding: "5px",
         fontSize: "24px",
-        width: "calc(100% - 300px)",
+        width: "70%",
         backgroundColor: "#1F2937",
         color: "white",
         paddingLeft: "50px",
     },
     editIcon: {
         position: "absolute",
-        left: "310px",
+        left: "31%",
         top: "12px",
         color: "white",
         width: "10",
         height: "10",
     },
     editorContainer: {
-        height: "100%",
+        height: "60%",
         boxSizing: "border-box",
     },
     upDate: {
@@ -45,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 var toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-    ["link", "image",'blockquote', 'code-block'],
+    ["link", "image",'blockquote', 'code-block',"video"],
   
     [{ 'header': 1 }, { 'header': 2 }],               // custom button values
     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
@@ -59,8 +61,10 @@ var toolbarOptions = [
     [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
     [{ 'font': [] }],
     [{ 'align': [] }],
+    ['emoji']
   
-    ['clean']                                         // remove formatting button
+    ['clean']     
+                                      // remove formatting button
   ];
 
 const Editor = ({ notes, selectedNote, selectedNoteIndex, noteUpdate }) => {
@@ -96,9 +100,10 @@ const Editor = ({ notes, selectedNote, selectedNoteIndex, noteUpdate }) => {
         setTitle(val);
         setUpdate((prev) => prev + 1);
     }
-
+    
     return (
         <div className={classes.editorContainer}>
+            
             <BorderColorIcon className={classes.editIcon}></BorderColorIcon>
            
             <input
@@ -106,12 +111,21 @@ const Editor = ({ notes, selectedNote, selectedNoteIndex, noteUpdate }) => {
                 placeholder="Note title..."
                 value={title ? title : ""}
                 onChange={(e) => updateTitle(e.target.value)}></input>
-            <Quill theme="snow" 
+            <ReactQuill theme="snow" 
             value={text} 
             onChange={updateBody} 
             modules={ {
-                toolbar: toolbarOptions
-              }}
+                toolbar:toolbarOptions,
+                
+                
+                
+                
+              }
+
+               }
+              
+          
+               
             />
         </div>
     );

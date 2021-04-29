@@ -32,12 +32,12 @@ code {
 .quill {
     height: 100%;
     box-sizing: border-box;
-    width: calc(100% - 300px);
+    width: 70%;
     float: left;
 }
 .ql-container {
     box-sizing: border-box;
-    height: calc(100% - 42px);
+    height: 20%;
     overflow-y: scroll;
 }
 .ql-editor {
@@ -117,7 +117,7 @@ code {
     transition: all 0.2s ease;
 }
 .btn-submit-form:hover {
-    background: #4468e4;
+    background: #111827;
 }
 .btn-submit-form:disabled {
     cursor: not-allowed;
@@ -128,15 +128,16 @@ code {
     background: #2e56e0;
 }
 .login-wrapper {
-    background: linear-gradient(to left,#A5B4FC,#F9A8D4);
+    background: #F9FAFB;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    
 }
 .login-container {
     text-align: center;
-    color: #fff;
+    color:'black';
     margin-top: -30px;
 }
 .login-title {

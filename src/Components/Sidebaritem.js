@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SidebarItem = ({ _note, _index, selectedNoteIndex, selectNote, deleteNote }) => {
     const classes = useStyles();
-
+    
     // const handleSelectNote = (n, i) => selectNote(n, i);
     const handleDeleteNote = (n) => {
         if (window.confirm(`Are you sure you want to delete: ${n.title}`)) {
@@ -42,7 +42,10 @@ const SidebarItem = ({ _note, _index, selectedNoteIndex, selectNote, deleteNote 
                     <ListItemText
                         primary={_note.title}
                         secondary={
-                            removeHTMLTags(_note.body.substring(0, 30)) + "..."
+                            removeHTMLTags(_note.body.substring(0, 30)) 
+                            
+
+                           
                         }></ListItemText>
                 </div>
                 <DeleteIcon

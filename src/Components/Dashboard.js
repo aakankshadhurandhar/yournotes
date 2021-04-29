@@ -6,6 +6,8 @@ import { useAuth } from "../Hooks/useAuth";
 import { Redirect } from "react-router-dom";
 import { removeHTMLTags } from "../Helpers/Helpers";
 import { useCallback } from "react";
+import Frontpage from "./Frontpage";
+
 
 const Dashboard = () => {
   const [notes, setNotes] = useState([]);
@@ -76,8 +78,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (newNoteId) {
       const newNoteIndex = notes.findIndex((_note) => _note.id === newNoteId);
-      console.log("🚀 ~ newNoteIndex", newNoteIndex);
-      console.log("🚀 ~ notes[newNoteIndex]", notes[newNoteIndex]);
+      
       selectNote(notes[newNoteIndex], newNoteIndex);
     }
   }, [newNoteId, notes]);
@@ -122,7 +123,7 @@ const Dashboard = () => {
         deleteNote={deleteNote}
         searchNotes={searchNotes}
       />
-
+     
       {selectedNote ? (
         <Editor
           selectedNote={selectedNote}
@@ -130,8 +131,11 @@ const Dashboard = () => {
           notes={notes}
           noteUpdate={noteUpdate}
         />
-      ) : null}
-    </div>
+      ) : (
+        <Frontpage />
+      )
+}
+</div>
   );
 };
 
