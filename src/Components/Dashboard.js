@@ -6,7 +6,7 @@ import { useAuth } from "../Hooks/useAuth";
 import { Redirect } from "react-router-dom";
 import { removeHTMLTags } from "../Helpers/Helpers";
 import { useCallback } from "react";
-import Frontpage from "./Frontpage";
+
 
 
 const Dashboard = () => {
@@ -132,7 +132,7 @@ const Dashboard = () => {
           noteUpdate={noteUpdate}
         />
       ) : (
-        <Frontpage />
+        null
       )
 }
 </div>
