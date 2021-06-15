@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         height: "10",
     },
     editorContainer: {
-        height: "60%",
+        height: "100%",
         boxSizing: "border-box",
     },
     upDate: {
@@ -86,7 +86,7 @@ const Editor = ({ notes, selectedNote, selectedNoteIndex, noteUpdate }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             noteUpdate(id, { title, body: text,update });
-        }, 1500);
+        }, 1000);
 
         return () => clearTimeout(timer);
         // eslint-disable-next-line
