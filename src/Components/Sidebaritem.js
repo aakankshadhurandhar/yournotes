@@ -7,6 +7,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 const useStyles = makeStyles((theme) => ({
     listItem: {
         cursor: "pointer",
+        color:"white",
     },
     textSection: {
         maxWidth: "85%",
@@ -20,7 +21,11 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             color: "red",
         },
+    textsmall:{
+        color:"white",
     },
+    },
+    
 }));
 
 const SidebarItem = ({ _note, _index, selectedNoteIndex, selectNote, deleteNote }) => {
@@ -38,8 +43,9 @@ const SidebarItem = ({ _note, _index, selectedNoteIndex, selectNote, deleteNote 
                 className={classes.listItem}
                 selected={selectedNoteIndex === _index}
                 alignItems="flex-start">
-                <div className={classes.textSection} onClick={() => selectNote(_note, _index)}>
+                <div className={classes.textSection} onClick={() => selectNote(_note, _index)} style={{color:"white"}}>
                     <ListItemText
+                        className={classes.textsmall}
                         primary={_note.title}
                         secondary={
                             removeHTMLTags(_note.body.substring(0, 30)) 
