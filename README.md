@@ -1,5 +1,6 @@
 # your-notes
 ## Note-taking app
+[![Netlify Status](https://api.netlify.com/api/v1/badges/70e16d43-8ff2-44dc-b036-5b4ad8bd1ede/deploy-status)](https://app.netlify.com/sites/yournote34/deploys)
 
 ## Features:
 1. Private notes for signedin members
