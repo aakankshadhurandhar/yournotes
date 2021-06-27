@@ -35,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
         height: "10",
     },
     editorContainer: {
+       
+        width: "100%",
         height: "100%",
         boxSizing: "border-box",
     },
